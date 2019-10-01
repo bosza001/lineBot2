@@ -10,7 +10,7 @@ def index():
     a=os.environ['Authorization']
     return "นายรณฤทธิ์ แสนสวัสดิ์ เลขที่ 4 ชั้น ม.4/1
 
-@app.route("/webhook", methods=['POST'])
+@app.route('webhook", methods=['POST'])
 def webhook():
     if request.method == 'POST':
         return "OK"
@@ -20,8 +20,8 @@ def callback():
     json_line = request.get_json()
     json_line = json.dumps(json_line)
     decoded = json.loads(json_line)
-    user = decoded["events"][0]['replyToken']
-    userText = decoded["events"][0]['message']['text']
+    user = decoded['originalDetectIntentRequest']['payload']['replyToken']
+    userText = decoded['queryResult']['intent']['displayName']
     #sendText(user,userText)
     if(userText == 'สวัสดี') :
        sendText(user('สวัสดี ครับ')
