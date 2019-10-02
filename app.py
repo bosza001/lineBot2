@@ -3,14 +3,14 @@ import os
 import json
 import requests
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 @app.route('/')
 def index():
     a=os.environ['Authorization']
-    return "นายรณฤทธิ์ แสนสวัสดิ์ เลขที่ 4 ชั้น ม.4/1
+    return "นายรณฤทธิ์ แสนสวัสดิ์ เลขที่ 4 ชั้น ม.4/1"
 
-@app.route('webhook", methods=['POST'])
+@app.route("/webhook", methods=['POST'])
 def webhook():
     if request.method == 'POST':
         return "OK"
@@ -20,16 +20,16 @@ def callback():
     json_line = request.get_json()
     json_line = json.dumps(json_line)
     decoded = json.loads(json_line)
-    user = decoded['originalDetectIntentRequest']['payload']['replyToken']
+    user = decoded['originalDetectIntenRequest']['payload']['data']['replyToken']
     userText = decoded['queryResult']['intent']['displayName']
     #sendText(user,userText)
-    if(userText == 'สวัสดี') :
-       sendText(user,'สวัสดี ครับ')
-    elif(userText =='ไปละนะ') :
-       sendText(user,'บาย')
+    if (userText == 'สวัสดี') :
+        sendText(user,'สวัสครับ')
+    elif(userText == 'ไปละนะ') :
+        sendText(user,'บาย')
     elif :
-       sendText(user,'ไม่เข้าใจ')
-                
+        sendText(user, 'ไม่เข้าใจ') 
+        
     return '',200
 
 def sendText(user, text):
@@ -44,5 +44,5 @@ def sendText(user, text):
   })
   r = requests.post(LINE_API, headers=headers, data=data) # ส่งข้อมูล
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     app.run()
