@@ -23,12 +23,12 @@ def callback():
     user = decoded['originalDetectIntentRequest']['payload']['replyToken']
     userText = decoded['queryResult']['intent']['displayName']
     #sendText(user,userText)
-    if(userText =='สวัสดี') :
-       sendText(user'สวัสดี ครับ')
+    if(userText == 'สวัสดี') :
+       sendText(user,'สวัสดี ครับ')
     elif(userText =='ไปละนะ') :
-       sendText(user'บาย')
+       sendText(user,'บาย')
     elif :
-       sendText(user('ไม่เข้าใจ')
+       sendText(user,'ไม่เข้าใจ')
                 
     return '',200
 
@@ -44,5 +44,5 @@ def sendText(user, text):
   })
   r = requests.post(LINE_API, headers=headers, data=data) # ส่งข้อมูล
 
-    if __name__ == '__main__':
+if __name__ == '__main__':
     app.run()
